@@ -17,8 +17,8 @@ parent(nancy, joe).
 parent(gustav, joe).
 mother(X, Y) :- parent(X, Y), female(X).
 father(X, Y) :- parent(X, Y), male(X).
-grandmother(X, Y) :- parent(X, Z), parent(Z, Y), female(X), X \== Y.
-grandfather(X, Y) :- parent(X, Z), parent(Z, Y), male(X), X \== Y.
+grandmother(X, Y) :- mother(X, Z), parent(Z, Y), X \== Y.
+grandfather(X, Y) :- father(X, Z), parent(Z, Y), X \== Y.
 ancestor(X, Y) :- grandfather(X, Y); grandmother(X, Y); parent(X, Y).
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
@@ -34,12 +34,12 @@ ancestor(X, Y) :- grandfather(X, Y); grandmother(X, Y); parent(X, Y).
 %     ?- grandmother(X, hunter).                   %                             
 %     X = nancy .                                  %             
 %     ?- grandfather(X, hunter).                   %                             
-%     X = gustav.                                  %             
+%     X = gustav .                                 %             
 %     ?- ancestor(X, hunter).                      %                         
-%     X = gustav .                                 %
+%     X = nancy .                                  %
 %     ?- ancestor(X, hunter).                      %            
-%     X = gustav ;                                 %
-%     X = nancy ;                                  %            
+%     X = nancy ;                                  %
+%     X = gustav ;                                 %            
 %     X = joe ;                                    %        
 %     X = june.                                    %
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%            
