@@ -36,10 +36,10 @@ ancestor(X, Y) :- grandfather(X, Y); grandmother(X, Y); parent(X, Y).
 %     ?- grandfather(X, hunter).                   %                             
 %     X = gustav .                                 %             
 %     ?- ancestor(X, hunter).                      %                         
-%     X = nancy .                                  %
+%     X = gustav .                                 %
 %     ?- ancestor(X, hunter).                      %            
-%     X = nancy ;                                  %
-%     X = gustav ;                                 %            
+%     X = gustav ;                                 %
+%     X = nancy ;                                  %            
 %     X = joe ;                                    %        
 %     X = june.                                    %
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%            
