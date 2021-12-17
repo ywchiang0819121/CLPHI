@@ -1,3 +1,4 @@
+% Nr. 309040 Chiang, Yu-Wei / Nr. 311877 Liu, Yang  / Nr.307891 Liang, Yunyi
 fib(0,0).
 fib(1,1).
 fib(N,F):-

@@ -1,3 +1,4 @@
+%% Nr. 309040 Chiang, Yu-Wei / Nr. 311877 Liu, Yang  / Nr.307891 Liang, Yunyi
 member(X,[X|_]).
 member(X,[_|L]) :- member(X,L).
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
