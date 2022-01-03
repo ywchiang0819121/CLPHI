@@ -1,0 +1,7 @@
+main=>
+    print("Hello_world! \n").
+main(Args)=>
+    print("Hello_world! \n"),
+    foreach (Arg in Args)
+        printf("%s\n", Arg)
+    end.
