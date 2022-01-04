@@ -1,0 +1,12 @@
+import cp.
+main=>
+    Alphabets = [T,E,S,F,D,I,N,K,R,A],
+    Alphabets:: 0..9,
+    all_different(Alphabets),
+    T#>0,F#>0,D#>0,K#>0,
+        T*10000+E*1000+S*100+T*10+E
+    +   F*10000+E*1000+S*100+T*10+E
+    +   D*10000+E*1000+I*100+N*10+E
+    #=   K*100000+R*10000+A*1000+F*100+T*10+E,
+    solve(Alphabets),
+    println(Alphabets).
