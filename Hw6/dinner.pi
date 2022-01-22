@@ -1,0 +1,18 @@
+import cp.
+main =>
+
+   Results = findall([grandparents=Grandparents, parents=Parents, children=Children], $dinner(Grandparents, Parents, Children)),
+   writeln(Results).
+
+
+dinner(Grandparents, Parents, Children) =>
+   Grandparents :: 1..6,
+   Parents      :: 1..10,
+   Children     :: 1..40,
+
+   % total cost = 20
+   Grandparents*3 + Parents*2 + Children/2 #= 20,
+   % total number of people = 20
+   Grandparents + Parents + Children #= 20, % number of people = 20
+
+   solve([Grandparents, Parents, Children]).
