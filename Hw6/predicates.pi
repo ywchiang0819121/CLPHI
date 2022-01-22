@@ -1,0 +1,12 @@
+import cp.
+
+minimum(X,Y,Z) => X#<=Y, Z#=X.
+minimum(X,Y,Z) => Y#<=X, Z#=Y.
+factorial(X,N) =>
+    T := 1,
+    foreach(E in 1..X)
+        T := T * E
+    end,
+    N#=T.
+member(X, [X|_]) => true.
+member(X, [_|L]) => member(X, L).
