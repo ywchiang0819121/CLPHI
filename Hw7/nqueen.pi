@@ -1,7 +1,9 @@
+%% Nr. 309040 Chiang, Yu-Wei / Nr. 311877 Liu, Yang  / Nr.307891 Liang, Yunyi
 import cp.
 
 main=> 
-    T:=615,
+    T:=610,
+    % Max size in 10 minutes.
     do
         writeln(T),
         T := T+1,
