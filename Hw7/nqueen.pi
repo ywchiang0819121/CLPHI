@@ -1,0 +1,21 @@
+import cp.
+
+main=> 
+    T:=600,
+    do
+        writeln(T),
+        T := T+1,
+        time_out($queens(T), 600000, S)
+    while(S=='success').
+
+queens(N)=>
+    Q = new_list(N),
+    %% base on cloumn/row, i.e. go right or go down
+    Q :: 1..N,
+    all_different(Q),
+    %vertical/horizontal check
+    all_different([$Q[I]-I : I in 1..N]),
+    %upper diagonal check
+    all_different([$Q[I]+I : I in 1..N]),
+    %bottom diagonal check
+    solve([ff],Q).

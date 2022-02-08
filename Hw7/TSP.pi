@@ -1,0 +1,56 @@
+import sat.
+
+main =>
+    M = {{0,6,1,5,0,0},        % cost matrix
+         {6,0,5,0,3,0},
+         {1,5,0,5,6,4},
+         {5,0,5,0,0,2},
+         {0,3,6,0,0,6},
+         {0,0,4,2,6,0}},
+    tsp(M).
+   
+tsp(M) =>
+    N = length(M),              % N=6, the number of cities
+    PathArr = new_array(N,N),   % The size of NextArr: 6*6
+    PathArr :: 0..1,
+    foreach (I in 1..N, J in 1..N)
+       % if there is no path between two cities, accordingly it's also 0 in NextArr
+       if M[I,J] == 0 then PathArr[I,J] = 0 end
+    end,
+  
+    % each vertex is followed by exactly one vertex in a tour
+    foreach (I in 1..N)
+       sum([PathArr[I,J] : J in 1..N]) #= 1
+    end,
+    % each vertex is preceded by exactly one vertex in a tour
+    foreach (J in 1..N)
+       sum([PathArr[I,J] : I in 1..N]) #= 1
+    end,
+  
+    % Order: Oder of Travel, which city shoudl the saleman travels first, second, ect.    
+    Order = new_array(N),
+    Order :: 1..N,
+    Order[1] = 1,    % the travel starts at city 1
+  
+    foreach (I in 1..N)
+       PathArr[I,1] #=> Order[I] #= N,
+       foreach (J in 2..N)
+          PathArr[I,J] #=> Order[J] #= Order[I]+1
+       end
+    end,  
+
+    CostArr = new_array(N),
+    foreach (I in 1..N)
+       % define the range of Cost Array
+       CostArr[I] :: min([M[I,J] : J in 1..N, M[I,J] !== 0]) ..  max([M[I,J] : J in 1..N, M[I,J] !== 0]),
+       foreach (J in 1..N)
+          % for city I, if CostArr[I] #= M[I,J] matches PathArr[I,J], PathArr[I,J] will be 1, meaning the next city after City I
+          PathArr[I,J] #=> CostArr[I] #= M[I,J],
+       end
+    end,
+    TotalCost #= sum([CostArr[I] : I in 1..N]),
+    solve($[min(TotalCost), report(println(cost=TotalCost))], PathArr),
+    writeln(PathArr),
+    foreach (I in 1..N, J in 1..N)
+       if PathArr[I,J]==1 then printf("%w -> %w\n",I,J) end
+    end.
